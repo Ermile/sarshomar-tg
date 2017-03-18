@@ -105,6 +105,9 @@ class controller
 	public function i_corridor()
 	{
 		$this::router();
+		http_response_code(200);
+		echo "true";
+		exit();
 	}
 
 	public static function __callStatic($_name, $_args)
