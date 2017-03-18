@@ -1,5 +1,5 @@
 <?php
-namespace content\home;
+namespace content\message;
 
 class model extends \lib\model
 {
