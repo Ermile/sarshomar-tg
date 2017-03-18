@@ -19,7 +19,9 @@ class protocol_telegram
 		$string_hook = file_get_contents('php://input');
 		if(!$hook = json_decode($string_hook, true))
 		{
-			exit();
+			http_response_code(200);
+			echo "true";
+			exit(1);
 		}
 		$update_id = $hook['update_id'];
 		unset($hook['update_id']);

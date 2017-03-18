@@ -107,7 +107,6 @@ class controller
 		$this::router();
 		http_response_code(200);
 		echo "true";
-		exit();
 	}
 
 	public static function __callStatic($_name, $_args)
