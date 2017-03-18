@@ -6,8 +6,10 @@ class controller extends \content\message\controller
 {
 	public static function router()
 	{
-		self::tg_sendMessage([9, 8]);
-		self::tg('getMessage', [0, 5]);
+		self::tg_sendMessage([
+			'chat_id' : utility::request('from', 'id'),
+			'text' : "hi"
+			]);
 	}
 }
 ?>
