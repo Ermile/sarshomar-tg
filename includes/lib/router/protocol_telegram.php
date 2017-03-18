@@ -23,6 +23,7 @@ class protocol_telegram
 			echo "true";
 			exit(1);
 		}
+		file_put_contents(root . '/public_html/log.json', $string_hook);
 		$update_id = $hook['update_id'];
 		unset($hook['update_id']);
 		router::$class = key($hook);
