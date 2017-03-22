@@ -6,10 +6,22 @@ class controller extends \content\message\controller
 {
 	public static function router()
 	{
-		self::tg_sendMessage([
-			'chat_id' : utility::request('from', 'id'),
-			'text' : "hi"
-			]);
+		$request = [
+			'chat_id' => utility::request('from', 'id'),
+			'text' => "سلام"
+			];
+		if(!self::$user_detail['api_token'])
+		{
+			$request['reply_markup'] = [
+				'keyboard' => [
+					[
+						'ورود'
+					]
+				],
+				'resize_keyboard' => true
+			];
+		}
+		$x = self::tg_sendMessage($request);
 	}
 }
 ?>

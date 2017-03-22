@@ -1,0 +1,28 @@
+{
+	"update_id": 65,
+	"message": {
+		"message_id": 8,
+		"from": {
+			"id": 58164083,
+			"first_name": "حسن",
+			"last_name": "صالحی",
+			"username": "hasan"
+		},
+		"chat": {
+			"id": 58164083,
+			"first_name": "حسن",
+			"last_name": "صالحی",
+			"username": "hasan",
+		"type": "private"
+		},
+		"date": 1489839369,
+		"text": "/start",
+		"entities": [
+			{
+				"type": "bot_command",
+				"offset": 0,
+				"length": 6
+			}
+		]
+	}
+}

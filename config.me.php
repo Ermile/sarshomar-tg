@@ -7,7 +7,7 @@ define("START_TIME", microtime(true));
 // ** MySQL settings - You can get this info from your web host ** //
  /** The name of the database */
 if(!defined('db_name'))
- define("db_name", 'tg_admin');
+ define("db_name", 'telegram_admin');
 
  /** MySQL database username */
 if(!defined('db_user'))

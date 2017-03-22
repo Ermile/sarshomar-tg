@@ -1,11 +1,16 @@
 <?php
 namespace mvc;
 
-class controller extends \lib\tg\controller
+class controller extends \lib\mvc\controller
 {
-	public static $bot_token = "348574521:AAE-gXO2HK09ZlvVCOdjrmn_bYDqHpWpAdo";
-	public static $bot_name = "SarshomarAdminBot";
-	public static $bot_link = "https::/t.me/SarshomarAdminBot";
-	public static $bot_start_link = "https::/t.me/SarshomarAdminBot?start";
+	public function __construct()
+	{
+		if(isset(get_called_class()::$AUTH) && AUTH_LOGIN != get_called_class()::$AUTH)
+		{
+			echo "ERROR AUTH!";
+			exit();
+		}
+		parent::__construct(...func_get_args());
+	}
 }
 ?>
