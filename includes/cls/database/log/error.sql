@@ -1271,3 +1271,247 @@ Field 'user_id' doesn't have a default value */
 		
 /* ERROR	MYSQL ERROR
 Cannot add or update a child row: a foreign key constraint fails (`telegram_admin`.`posts`, CONSTRAINT `posts_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE) */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:35:07	---0.00014591217041016s		---0ms
+	#2017-03-23 11:35:07
+SELECT	
+	logs.id				AS 	`id`,
+	logs.logitem_id 			AS 	`logitem_id`,
+	logitems.logitem_type		AS 	`logitem_type`,
+	logitems.logitem_caller		AS 	`logitem_caller`,
+	logitems.logitem_title		AS 	`logitem_title`,
+	logitems.logitem_desc		AS 	`logitem_desc`,
+	logitems.logitem_meta		AS 	`logitem_meta`,
+	IFNULL(logitems.count, 0) 	AS 	`count`,
+	logitems.logitem_priority 	AS 	`priority`,
+	logitems.date_modified 		AS 	`date_modified`,
+	logs.user_id		AS 	`user_id`,
+	logs.log_data		AS 	`data`,
+	logs.log_meta		AS 	`meta`,
+	logs.log_status		AS 	`status`,
+	logs.log_createdate			AS 	`createdate`,
+	logs.date_modified			AS 	`date_modified`,
+	users.user_displayname		AS  `displayname`,
+	users.user_mobile			AS  `mobile`,
+	users.user_port		AS  `port`,
+	users.user_verify			AS  `verify`,
+	users.user_trust			AS  `trust`
+		FROM
+	logs
+		LEFT JOIN logitems ON logitems.id = logs.logitem_id
+		LEFT JOIN users ON logs.user_id = users.id
+	 WHERE  logs.`user_id` = 5  AND  logs.`log_status` = 'enable' AND (
+		logitems.logitem_type 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_caller 	LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_title 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_data 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_meta 		LIKE '%app:telegram:request:has:inline_keyboard%'
+	) 
+/* ERROR	MYSQL ERROR
+Unknown column 'users.user_port' in 'field list' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:35:34	---0.00014996528625488s		---0ms
+	#2017-03-23 11:35:34
+SELECT	
+	logs.id				AS 	`id`,
+	logs.logitem_id 			AS 	`logitem_id`,
+	logitems.logitem_type		AS 	`logitem_type`,
+	logitems.logitem_caller		AS 	`logitem_caller`,
+	logitems.logitem_title		AS 	`logitem_title`,
+	logitems.logitem_desc		AS 	`logitem_desc`,
+	logitems.logitem_meta		AS 	`logitem_meta`,
+	IFNULL(logitems.count, 0) 	AS 	`count`,
+	logitems.logitem_priority 	AS 	`priority`,
+	logitems.date_modified 		AS 	`date_modified`,
+	logs.user_id		AS 	`user_id`,
+	logs.log_data		AS 	`data`,
+	logs.log_meta		AS 	`meta`,
+	logs.log_status		AS 	`status`,
+	logs.log_createdate			AS 	`createdate`,
+	logs.date_modified			AS 	`date_modified`,
+	users.user_displayname		AS  `displayname`,
+	users.user_mobile			AS  `mobile`,
+	users.user_port		AS  `port`,
+	users.user_verify			AS  `verify`,
+	users.user_trust			AS  `trust`
+		FROM
+	logs
+		LEFT JOIN logitems ON logitems.id = logs.logitem_id
+		LEFT JOIN users ON logs.user_id = users.id
+	 WHERE  logs.`user_id` = 5  AND  logs.`log_status` = 'enable' AND (
+		logitems.logitem_type 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_caller 	LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_title 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_data 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_meta 		LIKE '%app:telegram:request:has:inline_keyboard%'
+	) 
+/* ERROR	MYSQL ERROR
+Unknown column 'users.user_port' in 'field list' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:36:02	---0.00016999244689941s		---0ms
+	#2017-03-23 11:36:02
+
+	SELECT SQL_CALC_FOUND_ROWS
+		
+	logs.id				AS 	`id`,
+	logs.logitem_id 			AS 	`logitem_id`,
+	logitems.logitem_type		AS 	`logitem_type`,
+	logitems.logitem_caller		AS 	`logitem_caller`,
+	logitems.logitem_title		AS 	`logitem_title`,
+	logitems.logitem_desc		AS 	`logitem_desc`,
+	logitems.logitem_meta		AS 	`logitem_meta`,
+	IFNULL(logitems.count, 0) 	AS 	`count`,
+	logitems.logitem_priority 	AS 	`priority`,
+	logitems.date_modified 		AS 	`date_modified`,
+	logs.user_id		AS 	`user_id`,
+	logs.log_data		AS 	`data`,
+	logs.log_meta		AS 	`meta`,
+	logs.log_status		AS 	`status`,
+	logs.log_createdate			AS 	`createdate`,
+	logs.date_modified			AS 	`date_modified`,
+	users.user_displayname		AS  `displayname`,
+	users.user_mobile			AS  `mobile`,
+	users.user_port		AS  `port`,
+	users.user_verify			AS  `verify`,
+	users.user_trust			AS  `trust`
+		FROM
+	logs
+		LEFT JOIN logitems ON logitems.id = logs.logitem_id
+		LEFT JOIN users ON logs.user_id = users.id
+	
+		WHERE  logs.`user_id` = 5  AND  logs.`log_status` = 'enable' 
+		 AND (
+		logitems.logitem_type 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_caller 	LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_title 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_data 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_meta 		LIKE '%app:telegram:request:has:inline_keyboard%'
+	)
+	 ORDER BY logs.id DESC 
+	 LIMIT 0, 10 
+	-- logs::search()
+	-- ["app:telegram:request:has:inline_keyboard",{"user_id":5,"log_status":"enable"}]
+		
+/* ERROR	MYSQL ERROR
+Unknown column 'users.user_port' in 'field list' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:36:27	---0.00026392936706543s		---0ms
+	#2017-03-23 11:36:27
+
+	SELECT SQL_CALC_FOUND_ROWS
+		
+	logs.id				AS 	`id`,
+	logs.logitem_id 			AS 	`logitem_id`,
+	logitems.logitem_type		AS 	`logitem_type`,
+	logitems.logitem_caller		AS 	`logitem_caller`,
+	logitems.logitem_title		AS 	`logitem_title`,
+	logitems.logitem_desc		AS 	`logitem_desc`,
+	logitems.logitem_meta		AS 	`logitem_meta`,
+	IFNULL(logitems.count, 0) 	AS 	`count`,
+	logitems.logitem_priority 	AS 	`priority`,
+	logitems.date_modified 		AS 	`date_modified`,
+	logs.user_id		AS 	`user_id`,
+	logs.log_data		AS 	`data`,
+	logs.log_meta		AS 	`meta`,
+	logs.log_status		AS 	`status`,
+	logs.log_createdate			AS 	`createdate`,
+	logs.date_modified			AS 	`date_modified`,
+	users.user_displayname		AS  `displayname`,
+	users.user_mobile			AS  `mobile`,
+	users.user_port		AS  `port`,
+	users.user_verify			AS  `verify`,
+	users.user_trust			AS  `trust`
+		FROM
+	logs
+		LEFT JOIN logitems ON logitems.id = logs.logitem_id
+		LEFT JOIN users ON logs.user_id = users.id
+	
+		WHERE  logs.`user_id` = 5  AND  logs.`log_status` = 'enable' 
+		 AND (
+		logitems.logitem_type 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_caller 	LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logitems.logitem_title 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_data 		LIKE '%app:telegram:request:has:inline_keyboard%' OR
+		logs.log_meta 		LIKE '%app:telegram:request:has:inline_keyboard%'
+	)
+	 ORDER BY logs.id DESC 
+	 LIMIT 0, 10 
+	-- logs::search()
+	-- ["app:telegram:request:has:inline_keyboard",{"user_id":5,"log_status":"enable"}]
+		
+/* ERROR	MYSQL ERROR
+Unknown column 'users.user_port' in 'field list' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:48:16	---0.0001060962677002s		---0ms
+	#2017-03-23 11:48:16
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		logs.user_id = 5 AND logs.log_status = 'enable' AND logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:49:37	---0.00013017654418945s		---0ms
+	#2017-03-23 11:49:37
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		WHERE logs.user_id = 5 AND logs.log_status = 'enable' AND logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:50:03	---0.00010013580322266s		---0ms
+	#2017-03-23 11:50:03
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		logs.user_id = 5 AND logs.log_status = 'enable' AND logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:50:17	---0.00010800361633301s		---0ms
+	#2017-03-23 11:50:17
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		WHERE logs.user_id = 5 AND logs.log_status = 'enable' AND logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:52:26	---9.7036361694336E-5s		---0ms
+	#2017-03-23 11:52:26
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		WHERE logs.user_id = 5 AND logs.log_status = 'enable' AND logitems.logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:54:22	---0.00013113021850586s		---0ms
+	#2017-03-23 11:54:22
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		WHERE logs.user_id = 5 AND logs.log_status = 'enable' AND logitems.logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /
+---2017-03-23 11:55:17	---0.00012898445129395s		---0ms
+	#2017-03-23 11:55:17
+SELECT logs.*, logitems.* FROM logs, logitems
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		WHERE logs.user_id = 5 AND logs.log_status = 'enable' AND logitems.logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Not unique table/alias: 'logitems' */

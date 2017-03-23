@@ -28,5 +28,7 @@ class user_requests
 		\lib\db\logs::set('user:telegram:request_detail:'.$_options['cat'] . ':' . $_options['key'], $_user_id, ['data' => $request_id]);
 		return $request_id;
 	}
+
+	// public static function
 }
 ?>

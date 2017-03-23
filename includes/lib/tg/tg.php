@@ -45,13 +45,18 @@ trait tg
 			$result_decode = json_decode($result, true);
 		}
 		curl_close($ch);
+		if(DEBUG && !$result_decode['ok'])
+		{
+			var_dump($result_decode);
+			exit();
+		}
 
 		\lib\db\app_requests::insert(
 			$_options['user_id'],
 			$_options['user_request_id'],
 			$_options['method'],
-			$data_string,
-			$result,
+			$_options['data'],
+			$result_decode,
 			$result_decode['ok'] ? 'true' : 'false',
 			isset($result_decode['error_code']) ? $result_decode['error_code'] : 200
 			);
