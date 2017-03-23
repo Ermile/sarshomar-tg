@@ -19,6 +19,7 @@ class controller extends \mvc\tg_controller
 		$log_where =
 		[
 			'logs.user_id'    			=> $_user_id ? $_user_id : self::$user_id,
+			'log_status'				=> 'enable',
 			'logitems.logitem_caller'	=> 'app:telegram:request:has:inline_keyboard'
 
 		];
@@ -27,7 +28,7 @@ class controller extends \mvc\tg_controller
 
 	public static function remove_last_inline($saved_log, $_user_id = null)
 	{
-		if($saved_log && !empty($saved_log) && $saved_log['log_status'] == 'enable')
+		if($saved_log && !empty($saved_log))
 		{
 			$get_last_inline = \lib\db\app_requests::get((int)$saved_log['log_meta']);
 			if($get_last_inline)
