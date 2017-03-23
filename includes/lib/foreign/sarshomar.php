@@ -32,7 +32,12 @@ class sarshomar
 			$headers[] = "$key: $value";
 		}
 		$request[CURLOPT_HTTPHEADER] = $headers;
-		return json_decode(\lib\foreign::request($request), true)['result'];
+		$result = json_decode(\lib\foreign::request($request), true);
+		if(isset($result['result']))
+		{
+			return $result['result'];
+		}
+		return $result;
 	}
 
 	public static function get($_data, $_options = null)

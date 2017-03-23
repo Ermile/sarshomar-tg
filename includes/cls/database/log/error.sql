@@ -1515,3 +1515,42 @@ SELECT logs.*, logitems.* FROM logs, logitems
 		ORDER BY logs.log_createdate DESC LIMIT 0,1
 /* ERROR	MYSQL ERROR
 Not unique table/alias: 'logitems' */
+
+#---------------------------------------------------------------------- /callback?token=$2y$07$DTaFm4FUeeTfjg6Y5f0lQ.6iQSoKTcKR8CJiqB7dFt0ccIMBEQ5Ky
+---2017-03-23 13:43:47	---0.00018191337585449s		---0ms
+	#2017-03-23 13:43:47
+SELECT logitems.*, logs.* FROM logs
+		INNER JOIN logitems ON logitems.id = logs.logitem_id
+		WHERE logs.user_id = Array AND logitems.logitem_caller = 'app:telegram:request:has:inline_keyboard'
+		ORDER BY logs.log_createdate DESC LIMIT 0,1
+/* ERROR	MYSQL ERROR
+Unknown column 'Array' in 'where clause' */
+
+#---------------------------------------------------------------------- /callback?token=$2y$07$momU25rhVHj/q6ezkVKfwOaLrPEy3RDlsHwJYOE8u5VUOhyT7rFB.
+---2017-03-23 13:48:15	---8.4877014160156E-5s		---0ms
+	#2017-03-23 13:48:15
+
+	SELECT
+		*
+	FROM
+		users
+	WHERE
+		users.id = 
+	LIMIT 1
+	-- users::get()
+		
+/* ERROR	MYSQL ERROR
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1
+	-- users::get()' at line 7 */
+
+#---------------------------------------------------------------------- /callback?token=$2y$07$momU25rhVHj/q6ezkVKfwOaLrPEy3RDlsHwJYOE8u5VUOhyT7rFB.
+---2017-03-23 13:49:56	---0.0002591609954834s		---0ms
+	#2017-03-23 13:49:56
+
+	INSERT INTO
+		logs
+	SET
+		 `logitem_id` = 48 , `user_id` = 5 , `log_data` = '{"status":0,"title":null,"msg":["callback"],"messages":{"error":[{"title":"Token not verified","element":"temp_token","group":"argument"}]}}' , `log_status` = 'enable' , `log_meta` = NULL , `log_createdate` = '2017-03-23 13:49:56' 
+		
+/* ERROR	MYSQL ERROR
+Data too long for column 'log_data' at row 1 */

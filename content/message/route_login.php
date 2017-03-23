@@ -15,9 +15,11 @@ trait route_login
 		{
 			return false;
 		}
-		var_dump($token);
-		var_dump(date("Y-m-d H:i:s"));
-		self::tg_sendMessage([
+		\lib\db\logs::set("user:temp_token:request", self::$user_id, [
+			'data' => $token['token']
+			]);
+
+		$x = self::tg_sendMessage([
 			'chat_id' =>  utility::request('from', 'id'),
 			'text' => 'بررروی لینک زیر کلیک کنید و دسترسی سایت سرشمار را به این بات بدهید.',
 			'reply_markup' => [
