@@ -1,4 +1,5 @@
 <?php
+/**********/
 error_reporting(E_ALL);
 error_reporting(-1);
 ini_set('error_reporting', E_ALL);
@@ -15,6 +16,7 @@ elseif(isset($apache['authorization']))
 	$code_valid = $apache['authorization'];
 }
 
+/**********/
 define('DEBUG', true);
 switch ($code_valid) {
 	case 'Basic U2Fyc2hvbWFyVGc6MTMwMVRHQURtaW4=':
