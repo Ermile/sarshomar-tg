@@ -17,4 +17,8 @@ if(!defined('db_user'))
 if(!defined('db_pass'))
  define("db_pass", 'Ermile@#$1233');
 
+ define("admin_db_user", 'ermile');
+
+ define("admin_db_pass", 'Ermile!@#456');
+
 ?>

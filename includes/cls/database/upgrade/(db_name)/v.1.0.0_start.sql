@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------
+
 ALTER TABLE `users`
 CHANGE `user_mobile` `user_mobile` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 CHANGE `user_pass` `user_pass` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_bin NULL,
@@ -11,7 +11,6 @@ ADD `start_status` ENUM('start','block','selfish','stop','stop_selfish') NULL AF
 ADD `user_parent` INT UNSIGNED NULL AFTER `user_status`,
 ADD UNIQUE (`api_token`);
 
---------------------------------------------------------------------------------
 CREATE TABLE `app_requests` (
 	`id` int(10) UNSIGNED NOT NULL,
 	`user_id` int(10) UNSIGNED NOT NULL,
@@ -31,7 +30,6 @@ ALTER TABLE `app_requests`
 MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 
---------------------------------------------------------------------------------
 CREATE TABLE `user_requests` (
 	`id` int(10) UNSIGNED NOT NULL,
 	`user_id` int(10) UNSIGNED NOT NULL,

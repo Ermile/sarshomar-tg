@@ -1,5 +1,14 @@
 <?php
 /**********/
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(-1);
+
+register_shutdown_function(function()
+{
+	file_put_contents(root . 'public_html/log.json', json_encode(error_get_last()));
+});
+define('subDevelop', 'tgadmin');
 error_reporting(E_ALL);
 error_reporting(-1);
 ini_set('error_reporting', E_ALL);
