@@ -2,7 +2,7 @@
 namespace content\message;
 use lib\utility;
 
-class controller extends \mvc\tg_controller
+class controller extends \content\message\main
 {
 	use route_login;
 	public static function router()

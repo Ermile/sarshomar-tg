@@ -2,7 +2,7 @@
 namespace content\message\start;
 use lib\utility;
 
-class controller extends \content\message\controller
+class controller extends \content\message\main
 {
 	public static function router()
 	{
