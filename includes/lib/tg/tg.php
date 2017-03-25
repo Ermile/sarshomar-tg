@@ -5,8 +5,7 @@ use lib\router;
 
 trait tg
 {
-
-	public static function send($_options)
+	public static function tg__send($_options)
 	{
 		$ch = curl_init();
 		if ($ch === false)
@@ -30,6 +29,7 @@ trait tg
 			'Content-Length: ' . strlen($data_string))
 		);
 
+		$request_time = date("Y-m-d H:i:s");
 		$result = curl_exec($ch);
 		if($errno = curl_errno($ch)) {
 			$result_decode = [
@@ -50,15 +50,13 @@ trait tg
 			var_dump($result_decode);
 			exit();
 		}
-
 		\lib\db\app_requests::insert(
 			$_options['user_id'],
 			$_options['user_request_id'],
 			$_options['method'],
 			$_options['data'],
 			$result_decode,
-			$result_decode['ok'] ? 'true' : 'false',
-			isset($result_decode['error_code']) ? $result_decode['error_code'] : 200
+			$request_time
 			);
 		return $result_decode;
 	}
@@ -66,7 +64,20 @@ trait tg
 	public static function tg__callStatic($_name, $_args)
 	{
 		$class = get_called_class();
-		return self::send([
+
+		// Delay for send requests
+		$now = date("Y-m-d H:i:s");
+		$get = \lib\db\app_requests::search([
+			"UNIX_TIMESTAMP('$now') - UNIX_TIMESTAMP(response_time)" => ["<", "1"],
+			"user_id" => $class::$user_id
+			]);
+		if(!empty($get) && $get)
+		{
+			sleep(1);
+		}
+
+		// send
+		return self::tg__send([
 			'method' 			=> $_name,
 			'token' 			=> $class::$bot_token,
 			'name' 				=> $class::$bot_name,

@@ -42,33 +42,19 @@ class model extends \mvc\model
 		$log = \content\message\controller::get_last_inline($user_id);
 		\content\message\controller::remove_last_inline($log, $user_id);
 
-		\lib\tg\tg::send([
-			'token' => \mvc\tg_controller::$bot_token,
-			'method' => 'sendMessage',
-			'name' => \mvc\tg_controller::$bot_name,
-			'user_id' => $user_id,
-			'data' => [
-				'chat_id' => \ilib\db\users::get($user_id)['telegram_id'],
-				'text' => 'شما با موفقیت وارد شدید',
-				'reply_markup' => ['remove_keyboard' => true]
-			],
-			'user_request_id' => 0
+		\content\message\controller::$user_id = $user_id;
+		\content\message\controller::tg_sendMessage([
+			'chat_id' => \ilib\db\users::get($user_id)['telegram_id'],
+			'text' => 'شما با موفقیت وارد شدید',
+			'reply_markup' => ['remove_keyboard' => true]
 			]);
 		$last_post = \ilib\db\posts::get_last_poll($user_id);
 		if($last_post)
 		{
-			sleep(1);
-			\lib\tg\tg::send([
-			'token' => \mvc\tg_controller::$bot_token,
-			'method' => 'sendMessage',
-			'name' => \mvc\tg_controller::$bot_name,
-			'user_id' => $user_id,
-			'data' => [
+			\content\message\controller::tg_sendMessage([
 				'chat_id' => \ilib\db\users::get($user_id)['telegram_id'],
 				'text' => 'شما با موفقیت وارد شدید',
 				'reply_markup' => ['remove_keyboard' => true]
-			],
-			'user_request_id' => 0
 			]);
 		}
 

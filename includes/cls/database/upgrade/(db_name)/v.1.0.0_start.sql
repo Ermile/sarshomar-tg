@@ -14,7 +14,7 @@ ADD UNIQUE (`api_token`);
 CREATE TABLE `app_requests` (
 	`id` int(10) UNSIGNED NOT NULL,
 	`user_id` int(10) UNSIGNED NOT NULL,
-	`user_request_id` int(10) UNSIGNED NOT NULL,
+	`user_request_id` int(10) UNSIGNED NULL,
 	`method` varchar(255) NOT NULL,
 	`request_meta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
 	`response_meta` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
